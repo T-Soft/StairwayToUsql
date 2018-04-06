@@ -20,10 +20,77 @@
     <OutputPath>bin\Release\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Script Include="Script.usql" />
-    <ScriptCode Include="Script.usql.cs">
-      <DependentUpon>Script.usql</DependentUpon>
+    <Script Include="010 Create UkPostcodes Databse.usql" />
+    <Script Include="020 Create Postcodes Schema.usql" />
+    <Script Include="030 Create Counties Table.usql" />
+    <Script Include="040 Create Districts Table.usql" />
+    <Script Include="050 Create PostcodeEstimates Table.usql" />
+    <Script Include="060 Create Postcodes Table.usql" />
+    <Script Include="070 Extract Knowsley Data.usql" />
+    <Script Include="080 Create Partitioned Postcodes_DistrictCode Table.usql" />
+    <Script Include="HeadcountEstimates\00 Headcount Estimates.usql" />
+    <Script Include="HeadcountEstimates\01 Headcount Estimates Multiple.usql" />
+    <ScriptCode Include="010 Create UkPostcodes Databse.usql.cs">
+      <DependentUpon>010 Create UkPostcodes Databse.usql</DependentUpon>
     </ScriptCode>
+    <ScriptCode Include="020 Create Postcodes Schema.usql.cs">
+      <DependentUpon>020 Create Postcodes Schema.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="030 Create Counties Table.usql.cs">
+      <DependentUpon>030 Create Counties Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="040 Create Districts Table.usql.cs">
+      <DependentUpon>040 Create Districts Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="050 Create PostcodeEstimates Table.usql.cs">
+      <DependentUpon>050 Create PostcodeEstimates Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="060 Create Postcodes Table.usql.cs">
+      <DependentUpon>060 Create Postcodes Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="070 Extract Knowsley Data.usql.cs">
+      <DependentUpon>070 Extract Knowsley Data.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="080 Create Partitioned Postcodes_DistrictCode Table.usql.cs">
+      <DependentUpon>080 Create Partitioned Postcodes_DistrictCode Table.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HeadcountEstimates\00 Headcount Estimates.usql.cs">
+      <DependentUpon>HeadcountEstimates\00 Headcount Estimates.usql</DependentUpon>
+    </ScriptCode>
+    <ScriptCode Include="HeadcountEstimates\01 Headcount Estimates Multiple.usql.cs">
+      <DependentUpon>HeadcountEstimates\01 Headcount Estimates Multiple.usql</DependentUpon>
+    </ScriptCode>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HeadcountEstimates" />
+    <Folder Include="ssc_uk_postcodes" />
+    <Folder Include="ssc_uk_postcodes\counties" />
+    <Folder Include="ssc_uk_postcodes\districts" />
+    <Folder Include="ssc_uk_postcodes\postcodes" />
+    <Folder Include="ssc_uk_postcodes\postcodeestimates" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ssc_uk_postcodes\counties\England_Counties.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\districts\England_Districts.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_A_F.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_G_L.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_M_R.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodeestimates\Postcode_Estimates_1_S_Z.csv">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="ssc_uk_postcodes\postcodes\Postcodes.csv">
+      <SubType>Content</SubType>
+    </Content>
   </ItemGroup>
   <!-- check for SDK Build target in current path then in USQLSDKPath in the case of command line build -->
   <Import Project="UsqlSDKBuild.targets" Condition="'$(BuildingInsideVisualStudio)' != 'true' And  Exists('UsqlSDKBuild.targets')" />

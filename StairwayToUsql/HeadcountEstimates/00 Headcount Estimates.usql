@@ -1,0 +1,15 @@
+﻿@results = EXTRACT postcode string,
+total int,
+males int,
+females int,
+numberofhouseholds int
+FROM "/Postcode_Estimates_1_M_R.csv"
+USING Extractors.Csv();
+
+@m12results = SELECT postcode, total, males, females
+FROM @results
+WHERE postcode.Substring(0, 3).ToLower() == "m12";
+
+OUTPUT @m12results TO "/output/M12Postcodes.csv"
+ORDER BY total DESC
+USING Outputters.Csv();

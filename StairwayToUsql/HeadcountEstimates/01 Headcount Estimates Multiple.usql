@@ -1,0 +1,15 @@
+﻿ @results = EXTRACT postcode string,
+  oacode string,
+  total int,
+  percentage int,
+  filename string
+  FROM "/oacodes/{filename:*}.csv"
+  USING Extractors.Csv();
+  
+  @oacoderesults = SELECT oacode, COUNT(*) AS total
+  FROM @results
+  GROUP BY oacode;
+
+  OUTPUT @oacoderesults TO "/output/oacode_totals.csv"
+  ORDER BY total DESC
+  USING Outputters.Csv();
